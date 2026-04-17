@@ -43,7 +43,14 @@ body {
   justify-content: center;
   padding: 1em;
   font-size: 18px;
-  align-items: center;
+  align-it<div class="conteudo">
+  <div class="botoes">
+    <button class="botao ativo">Cursos na Alura</button>
+    <button class="botao">Criar projetos em Javascript</button>
+    <button class="botao">Criar um portfolio</button>
+    <button class="botao">Atualizar meu currículo</button>
+  </div>
+ ems: center;
   width: 100%;
   border-bottom: 4px solid var(--botao-ativo);
   border-left: 2px solid var(--botao-ativo);
