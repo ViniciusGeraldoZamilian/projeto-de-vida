@@ -1,88 +1,89 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap");
 
 :root {
-    --cor-de-fundo: #1e1e1e;
-    --verde: #6fff57;
-    --branco: #ffffff;
-    --botao-ativo: #3a375e;
-    --botao-inativo: rgba(58, 55, 94, 0.5);
-    --texto-fundo: rgba(58, 55, 94, 0.3);
+--cor-de-fundo: #1e1e1e;
+--verde: #6fff57;
+--branco: #ffffff;
+--botao-ativo: #3a375e;
+--botao-inativo: rgba(58, 55, 94, 0.5);
+--texto-fundo: rgba(58, 55, 94, 0.3);
 }
 
 body {
-    background-color: var(--cor-de-fundo);
-    color: var(--branco);
-    font-family: "Chakra Petch", sans-serif;
+background-color: var(--cor-de-fundo);
+color: var(--branco);
+font-family: "Chakra Petch", sans-serif;
+margin: 0;
 }
 
 .conteudo-principal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+max-width: 1200px;
+margin: 0 auto;
 }
 
 .titulo-principal {
-    width: 100%;
-    font-size: 32px;
+width: 100%;
+font-size: 32px;
 }
 
 .titulo-principal span {
-    color: var(--verde);
+color: var(--verde);
 }
 
 .botoes {
-    display: flex;
-    width: 100%;
+display: flex;
+width: 100%;
 }
 
 .botao {
-    flex: 1;
-    padding: 1em;
-    background-color: var(--botao-inativo);
-    color: var(--branco);
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+flex: 1;
+padding: 1em;
+background-color: var(--botao-inativo);
+color: var(--branco);
+border: none;
+cursor: pointer;
+transition: 0.3s;
 }
 
 .botao:hover {
-    filter: brightness(1.2);
+filter: brightness(1.2);
 }
 
 .botao.ativo {
-    background-color: var(--botao-ativo);
-    border-bottom: 4px solid var(--verde);
+background-color: var(--botao-ativo);
+border-bottom: 4px solid var(--verde);
 }
 
 .abas-textos {
-    background-color: var(--texto-fundo);
-    padding: 30px;
-    border-radius: 0 0 20px 20px;
-    width: 100%;
+background-color: var(--texto-fundo);
+padding: 30px;
+border-radius: 0 0 20px 20px;
+width: 100%;
 }
 
 .aba-conteudo {
-    display: none;
-    text-align: center;
+display: none;
+text-align: center;
 }
 
 .aba-conteudo.ativo {
-    display: block;
+display: block;
 }
 
 .aba-conteudo-titulo-principal {
-    font-size: 26px;
+font-size: 26px;
 }
 
 .aba-conteudo-titulo-secundario {
-    color: var(--verde);
-    text-transform: uppercase;
+color: var(--verde);
+text-transform: uppercase;
 }
 
 .contador {
-    margin-top: 15px;
-    font-size: 22px;
-    font-weight: bold;
+margin-top: 15px;
+font-size: 22px;
+font-weight: bold;
 }
