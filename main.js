@@ -1,49 +1,123 @@
+// ===============================
+// BOTÕES DAS ABAS
+// ===============================
+
 const botoes = document.querySelectorAll(".botao");
-const textos = document.querySelectorAll(".aba-conteudo");
+const abas = document.querySelectorAll(".aba-conteudo");
 
 for (let i = 0; i < botoes.length; i++) {
-    botoes[i].onclick = function () {
 
+    botoes[i].addEventListener("click", function () {
+
+        // REMOVE CLASSE ATIVA
         for (let j = 0; j < botoes.length; j++) {
             botoes[j].classList.remove("ativo");
-            textos[j].classList.remove("ativo");
+            abas[j].classList.remove("ativo");
         }
 
+        // ADICIONA CLASSE ATIVA
         botoes[i].classList.add("ativo");
-        textos[i].classList.add("ativo");
-    }
+        abas[i].classList.add("ativo");
+
+    });
+
 }
 
-const contadores = document.querySelectorAll(".contador");
+// ===============================
+// DATAS DOS OBJETIVOS
+// ===============================
 
-const tempoObjetivo1 = new Date("2032-04-25T00:00:00");
-const tempoObjetivo2 = new Date("2032-05-25T00:00:00");
-const tempoObjetivo3 = new Date("2032-06-25T00:00:00");
-const tempoObjetivo4 = new Date("2032-07-25T00:00:00");
+const tempos = [
 
-const tempos = [tempoObjetivo1, tempoObjetivo2, tempoObjetivo3, tempoObjetivo4];
+    new Date("2032-04-25T00:00:00"),
+    new Date("2032-05-25T00:00:00"),
+    new Date("2032-06-25T00:00:00"),
+    new Date("2032-07-25T00:00:00")
 
-function atualizaCronometro() {
-    for (let i = 0; i < contadores.length; i++) {
-        contadores[i].textContent = calculaTempo(tempos[i]);
-    }
-}
+];
 
-atualizaCronometro();
-setInterval(atualizaCronometro, 1000);
+// ===============================
+// FUNÇÃO DO CRONÔMETRO
+// ===============================
 
 function calculaTempo(tempoObjetivo) {
-    let tempoAtual = new Date();
-    let tempoFinal = tempoObjetivo - tempoAtual;
 
-    let segundos = Math.floor(tempoFinal / 1000);
-    let minutos = Math.floor(segundos / 60);
-    let horas = Math.floor(minutos / 60);
-    let dias = Math.floor(horas / 24);
+    const agora = new Date();
 
-    segundos %= 60;
-    minutos %= 60;
-    horas %= 24;
+    // DIFERENÇA ENTRE DATAS
+    const tempoRestante = tempoObjetivo - agora;
 
-    return dias + " dias " + horas + " horas " + minutos + " minutos " + segundos + " segundos";
+    // CASO O TEMPO ACABE
+    if (tempoRestante <= 0) {
+
+        return `
+            <div class="contador-finalizado">
+                Objetivo concluído!
+            </div>
+        `;
+
+    }
+
+    // CÁLCULOS
+    const dias = Math.floor(tempoRestante / (1000 * 60 * 60 * 24));
+
+    const horas = Math.floor(
+        (tempoRestante / (1000 * 60 * 60)) % 24
+    );
+
+    const minutos = Math.floor(
+        (tempoRestante / (1000 * 60)) % 60
+    );
+
+    const segundos = Math.floor(
+        (tempoRestante / 1000) % 60
+    );
+
+    // RETORNA HTML FORMATADO
+    return `
+
+        <div class="contador-digito">
+            <p class="contador-digito-numero">${dias}</p>
+            <p class="contador-digito-texto">dias</p>
+        </div>
+
+        <div class="contador-digito">
+            <p class="contador-digito-numero">${horas}</p>
+            <p class="contador-digito-texto">horas</p>
+        </div>
+
+        <div class="contador-digito">
+            <p class="contador-digito-numero">${minutos}</p>
+            <p class="contador-digito-texto">min</p>
+        </div>
+
+        <div class="contador-digito">
+            <p class="contador-digito-numero">${segundos}</p>
+            <p class="contador-digito-texto">seg</p>
+        </div>
+
+    `;
+
 }
+
+// ===============================
+// ATUALIZA OS CONTADORES
+// ===============================
+
+function atualizaCronometro() {
+
+    const contadores = document.querySelectorAll(".contador");
+
+    for (let i = 0; i < contadores.length; i++) {
+
+        contadores[i].innerHTML = calculaTempo(tempos[i]);
+
+    }
+
+}
+
+// INICIA O CRONÔMETRO
+atualizaCronometro();
+
+// ATUALIZA A CADA 1 SEGUNDO
+setInterval(atualizaCronometro, 1000);
