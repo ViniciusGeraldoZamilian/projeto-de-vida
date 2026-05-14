@@ -6,62 +6,85 @@
     --branco: #ffffff;
     --botao-ativo: #3a375e;
     --botao-inativo: rgba(58, 55, 94, 0.5);
-    --texto-fundo: rgba(58, 55, 94, 0.3);
+    --texto-fundo: rgba(0, 0, 0, 0.6);
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background:url('img/tabaco bem massa.jpg');
-    color: var(--branco);
     font-family: "Chakra Petch", sans-serif;
+    color: var(--branco);
+
+    background-image: url('img/tabaco bem massa.jpg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    min-height: 100vh;
 }
 
+/* CONTEÚDO PRINCIPAL */
 .conteudo-principal {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 40px 20px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
 }
 
+/* TÍTULO */
 .titulo-principal {
-    text-align: left;
-    width: 100%;
-    font-size: 32px;
+    font-size: 42px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .titulo-principal span {
     color: var(--verde);
 }
 
+/* ÁREA GERAL */
+.conteudo {
+    width: 100%;
+}
+
+/* BOTÕES */
+.botoes {
+    display: flex;
+    flex-direction: column;
+}
+
 .botao {
-    font-family: "Chakra Petch", sans-serif;
+    width: 100%;
+    padding: 18px;
+
+    border: none;
+    border-bottom: 4px solid var(--botao-ativo);
+
     background-color: var(--botao-inativo);
     color: var(--branco);
-    display: flex;
-    justify-content: center;
-    padding: 1em;
+
+    font-family: "Chakra Petch", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.botao {
-    font-size: 18px;
-    align-items: center;
-    width: 100%;
-    border-bottom: 4px solid var(--botao-ativo);
-    border-left: 2px solid var(--botao-ativo);
-    border-right: 2px solid var(--botao-ativo);
-    border-top: none;
-}
-
-.botao:first-child {
-    border-radius: 40px 40px 0 0;
-}
-
-.botoes {
-    display: block;
+.botao:hover {
+    background-color: var(--botao-ativo);
+    transform: scale(1.02);
 }
 
 .botao.ativo {
@@ -69,60 +92,136 @@ body {
     border-bottom: 4px solid var(--verde);
 }
 
+/* BORDAS DOS BOTÕES */
+.botao:first-child {
+    border-radius: 20px 20px 0 0;
+}
+
+/* CONTEÚDO DAS ABAS */
 .abas-textos {
     background-color: var(--texto-fundo);
+
     padding: 40px;
-    border-radius: 0 0 40px 40px;
+    border-radius: 0 0 20px 20px;
+
+    backdrop-filter: blur(5px);
+}
+
+/* ABAS */
+.aba-conteudo {
+    display: none;
+    animation: aparecer 0.5s ease;
 }
 
 .aba-conteudo.ativo {
     display: block;
 }
 
-.aba-conteudo {
-    display: none;
+/* ANIMAÇÃO */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+/* TÍTULOS DAS ABAS */
 .aba-conteudo-titulo-principal {
-    font-size: 28px;
+    font-size: 32px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .aba-conteudo-titulo-secundario {
     text-align: center;
-    color: var(--verde);
     text-transform: uppercase;
-}
-.contador {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.contador-digito {
-  padding: 0 16px;
-  text-align: center;
-  min-width: 100px;
+
+    color: var(--verde);
+
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
+/* CONTADOR */
+.contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* CADA BLOCO */
+.contador-digito {
+    background-color: rgba(255, 255, 255, 0.08);
+
+    padding: 20px;
+    border-radius: 16px;
+
+    min-width: 120px;
+
+    text-align: center;
+
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* NÚMEROS */
+.contador-digito-numero {
+    font-size: 70px;
+    font-weight: 700;
+    color: var(--branco);
+}
+
+/* TEXTO */
+.contador-digito-texto {
+    font-size: 18px;
+    color: var(--verde);
+
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* RESPONSIVIDADE */
 @media screen and (min-width: 768px) {
+
     .botoes {
-        display: flex;
+        flex-direction: row;
     }
 
     .botao:first-child {
-        border-radius: 40px 0 0 0;
+        border-radius: 20px 0 0 0;
     }
 
     .botao:last-child {
-        border-radius: 0 40px 0 0;
+        border-radius: 0 20px 0 0;
     }
 }
-.contador-digito-numero {
-  font-size: 80px;
-  margin: 0;
-}
-.contador-digito-texto {
-  color: var(--verde);
-  font-size: 20px;
-  margin: 0;
+
+@media screen and (max-width: 600px) {
+
+    .titulo-principal {
+        font-size: 30px;
+    }
+
+    .aba-conteudo-titulo-principal {
+        font-size: 24px;
+    }
+
+    .contador-digito {
+        min-width: 90px;
+        padding: 15px;
+    }
+
+    .contador-digito-numero {
+        font-size: 45px;
+    }
+
+    .contador-digito-texto {
+        font-size: 14px;
+    }
 }
