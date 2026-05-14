@@ -93,10 +93,15 @@ body {
     color: var(--verde);
     text-transform: uppercase;
 }
-
 .contador {
-    font-size: 20px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contador-digito {
+  padding: 0 16px;
+  text-align: center;
+  min-width: 100px;
 }
 
 @media screen and (min-width: 768px) {
@@ -111,4 +116,13 @@ body {
     .botao:last-child {
         border-radius: 0 40px 0 0;
     }
+}
+.contador-digito-numero {
+  font-size: 80px;
+  margin: 0;
+}
+.contador-digito-texto {
+  color: var(--verde);
+  font-size: 20px;
+  margin: 0;
 }
